@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Automação</title>
+	<link rel="shortcut icon" href="img/ico_arduino.png" />
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://use.fontawesome.com/c7ec23303a.js"></script>
+</head>
+
+<body>
+	<style type="text/css">
+		.m-t-5 {
+			margin-top: 5px!important
+		}
+		.m-t-10 {
+			margin-top: 10px!important
+		}
+
+		.list-group-item:hover{
+			background: #5bc0de;
+			color: #FFF;
+		}
+		
+		.list-group-item:active{
+			background: #5bc0de;
+			color: #FFF;
+		}
+
+		.list-group-item:focus{
+			background: #5bc0de!important;
+			color: #FFF!important;
+		}
+
+
+	</style>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="text-center"> Ambientes </h3>
+			</div>
+			<div class="col-md-8">
+				<h3 class="text-center" id="nomeSelecionado"></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 m-t-5">
+				<div class="list-group">
+					<button type="button" id="salas" class="list-group-item"onclick="abrirLab(this)">Salas</button>
+					<button type="button" id="lab" class="list-group-item" onclick="abrirLab(this)">Laboratórios</button>
+					<button type="button" id="auditorio" class="list-group-item" onclick="abrirLab(this)">Auditorio</button>
+					<button type="button" id="salaProf" class="list-group-item" onclick="abrirLab(this)">Sala Professores</button>
+					<button type="button" id="biblioteca" class="list-group-item" onclick="abrirLab(this)">Biblioteca</button>
+				</div>
+			</div>
+			<!-- SALAS -->
+			<div class="col-md-8" id="groupSalas">
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Sala 1 (F01)</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<button type="button" id="sala_ar1" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_ar1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Sala 2 (F02)</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<button type="button" id="sala_ar2" class="btn btn-sm btn-info btn-block" onclick="ligar('sala_ar2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala2_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('sala2_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala2_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('sala2_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala2_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('sala2_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala2_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('sala2_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala2_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('sala2_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala2_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('sala2_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Sala 3 (F03)</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<button type="button" id="sala3_ar3" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_ar3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala3_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala3_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala3_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala3_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala3_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="sala3_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('sala3_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIM SALAS -->
+
+			<!-- LABORATÓRIOS -->
+			<div class="col-md-8" id="laboratorio">
+
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Laboratório 1 (F06)</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<button type="button" id="ar1" class="btn btn-sm btn-info btn-block" onclick="ligar('ar1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab1_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('lab1_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab1_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('lab1_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab1_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('lab1_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab1_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('lab1_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab1_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('lab1_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab1_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('lab1_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Laboratório 2 (F106)</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<button type="button" id="ar2" class="btn btn-sm btn-info btn-block" onclick="ligar('ar2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab2_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('lab2_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab2_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('lab2_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab2_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('lab2_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab2_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('lab2_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab2_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('lab2_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab2_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('lab2_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Laboratório 1 (F06)</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado
+								</div>
+								<div class="col-md-3 col-sm-6">
+									<button type="button" id="ar3" class="btn btn-sm btn-info btn-block" onclick="ligar('ar3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab3_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('lab3_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab3_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('lab3_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab3_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('lab3_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab3_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('lab3_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab3_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('lab3_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="lab3_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('lab3_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIM LABORATORIO -->
+
+			<!-- AUDITÓRIO -->
+			<div class="col-md-8 m-t-5" id="auditorioSala">
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Auditório A5</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_ar1" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_ar1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_ar2" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_ar2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_ar3" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_ar3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_ar4" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_ar4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('aud_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="panel panel-info m-t-5">
+						<div class="panel-heading text-center">Auditório A10</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_ar1" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_ar1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_ar2" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_ar2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_ar3" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_ar3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-5">
+									Ar-Condicionado 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_ar4" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_ar4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 1
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_l1')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 2
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_l2')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 3
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_l3')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 4
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_l4')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 5
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_l5')">Ligar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-9 col-sm-6 m-t-10">
+									Luz 6
+								</div>
+								<div class="col-md-3 col-sm-6 m-t-5">
+									<button type="button" id="aud2_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('aud2_l6')">Ligar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- BIBLIOTECA -->
+			<div class="col-md-8 m-t-5" id="bibliotecaSala">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<div class="panel panel-info m-t-5">
+							<div class="panel-heading text-center">Biblioteca</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-5">
+										Ar-Condicionado 1
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_ar1" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_ar1')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-5">
+										Ar-Condicionado 2
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_ar2" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_ar2')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-5">
+										Ar-Condicionado 3
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_ar3" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_ar3')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-5">
+										Ar-Condicionado 4
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_ar4" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_ar4')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-10">
+										Luz 1
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_l1" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_l1')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-10">
+										Luz 2
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_l2" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_l2')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-10">
+										Luz 3
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_l3" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_l3')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-10">
+										Luz 4
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_l4" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_l4')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-10">
+										Luz 5
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_l5" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_l5')">Ligar</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 col-sm-6 m-t-10">
+										Luz 6
+									</div>
+									<div class="col-md-3 col-sm-6 m-t-5">
+										<button type="button" id="bib_l6" class="btn btn-sm btn-info btn-block" onclick="ligar('bib_l6')">Ligar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIM BIBLIOTECA -->
+
+			<!-- SEM DADOS -->
+			<div class="col-md-8 m-t-5" id="semAmbiente" style="border: 1px solid #efefef">
+				<div class="row">
+					<div class="col md-12">
+						<div class="form-group">
+							<h1 class="text-center">Selecione um ambiente</h1>
+							<h1 class="text-center" style="font-size: 50px"><i class="fa fa-frown-o" aria-hidden="true"></i></h1>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIM SEM DADOS -->
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+			$("#semAmbiente").css("display", "block");
+			$('#nomeSelecionado').text('');
+			$("#laboratorio").css("display","none");
+			$("#groupSalas").css("display","none");
+			$("#auditorioSala").css("display","none");
+			$("#bibliotecaSala").css("display","none");
+		});
+
+		function ligar(id) {
+			if ($("#"+id).text() == 'Ligar') {
+				$("#"+id).text('Desligar');
+			} else {
+				$("#"+id).text('Ligar');
+			}
+			$("#"+id).toggleClass('btn-danger');
+		}
+
+		function abrirLab(element) {
+			$('#nomeSelecionado').text('');
+			$("#laboratorio").css("display","none");
+			$("#groupSalas").css("display","none");
+			$("#auditorioSala").css("display", "none");
+			$("#semAmbiente").css("display", "none");
+			$("#auditorioSala").css("display","none");
+			$("#bibliotecaSala").css("display","none");
+
+			var tipo = $(element).attr('id');
+
+			console.log(tipo);
+			switch(tipo){
+				case 'lab':
+					$('#nomeSelecionado').text('Laboratório');
+					$("#laboratorio").css("display","block");
+				break;
+				case 'salas':
+					$('#nomeSelecionado').text('Salas');
+					$("#groupSalas").css("display","block");
+				break;
+				case 'auditorio':
+					$('#nomeSelecionado').text('Auditório');
+					$("#auditorioSala").css("display","block");
+				break;
+				case 'biblioteca':
+					$('#nomeSelecionado').text('Biblioteca');
+					$("#bibliotecaSala").css("display","block");
+				break;
+				default:
+					$('#nomeSelecionado').text('');
+					$("#laboratorio").css("display","none");
+					$("#groupSalas").css("display","none");
+					$("#auditorioSala").css("display", "none");
+					$("#semAmbiente").css("display", "block");
+				break;
+			}
+		}
+	</script>
+</body>
+</html>
